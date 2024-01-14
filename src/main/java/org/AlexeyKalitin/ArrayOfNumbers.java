@@ -23,8 +23,7 @@ public class ArrayOfNumbers implements Serializable {
                 .collect(Collectors.joining(","));
 
         try (OutputStreamWriter outputStream = new OutputStreamWriter(
-                new FileOutputStream("numbers.jar"), StandardCharsets.US_ASCII)) {
-
+                new FileOutputStream("numbers.txt"), StandardCharsets.US_ASCII)) {
             for (int i = 0; i < serializedString.length(); i++) {
                 outputStream.write(serializedString.charAt(i));
             }
@@ -36,14 +35,17 @@ public class ArrayOfNumbers implements Serializable {
 
     }
 
-    public void deserialization() {
+    public char[] deserialization() {
         try (InputStreamReader inputStream = new InputStreamReader(
-                new FileInputStream("numbers.jar"))) {
+                new FileInputStream("numbers.txt"))) {
             int character;
+            int max = 0;
+            char[] desNumbers = new char[max];
             while ((character = inputStream.read()) != -1) {
                 System.out.print((char) character);
+                max++;
             }
-
+            return desNumbers;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

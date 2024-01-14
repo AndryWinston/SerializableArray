@@ -1,5 +1,7 @@
 package org.AlexeyKalitin;
 
+import java.lang.instrument.Instrumentation;
+
 public class Main {
     public static void main(String[] args) {
         int[] numbers = new int[300];
@@ -10,7 +12,7 @@ public class Main {
 
         ArrayOfNumbers arrayOfNumbers = new ArrayOfNumbers(numbers);
         arrayOfNumbers.serialization();
-        arrayOfNumbers.deserialization();
-    }
+        System.out.println(arrayOfNumbers.deserialization());
 
+    }
 }
